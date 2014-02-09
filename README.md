@@ -1,9 +1,13 @@
 # CORS Play
 
+[![Build Status](https://travis-ci.org/knutwalker/cors-play?branch=master)](https://travis-ci.org/knutwalker/cors-play) [![Coverage Status](https://coveralls.io/repos/knutwalker/cors-play/badge.png?branch=master)](https://coveralls.io/r/knutwalker/cors-play?branch=master)
+
+
 Easy CORS integration for Play:
 
  - use CORS with your Playframework application
  - No additional controllers or routes required
+
 
 ## Installation
 

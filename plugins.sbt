@@ -6,3 +6,4 @@ EclipseKeys.withSource := true
 
 ScctPlugin.instrumentSettings
 
+CoverallsPlugin.singleProject
