@@ -5,7 +5,7 @@ import play.api.mvc.RequestHeader
 
 /** A CorsStrategy is just a `RequestHeader ⇒ Option[String]`
   * If it returns None, the request should not be allowed.
-  * If it returnds Some(x), x should be the allowed origin.
+  * If it returns Some(x), x should be the allowed origin.
   * This might still differ from the requests' Origin
   *
   * @param handler the actual function that is used
@@ -74,7 +74,13 @@ object CorsStrategy {
 
   /** Provide custom logic to determine, whether or not the request should be allowed
     * @param handler a partial function that, given a RequestHeader, should match if the request is allowed and
-    *             return the specific allowed origin
+    *    return the specific allowed origin
     */
-  case class Custom(handler: PartialFunction[RequestHeader, String]) extends CorsStrategy(handler.lift)
+  case class CustomPF(handler: PartialFunction[RequestHeader, String]) extends CorsStrategy(handler.lift)
+
+  /** Provide custom logic to determine, whether or not the request should be allowed
+    * @param handler a function that, given a RequestHeader, should return Some(origin) if the request is allowed,
+    *       otherwise it should return None
+    */
+  case class Custom(handler: RequestHeader ⇒ Option[String]) extends CorsStrategy(handler)
 }
