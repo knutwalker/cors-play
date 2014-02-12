@@ -14,14 +14,18 @@ Easy CORS integration for Play:
 
 ### Stable Version
 
-_TODO_
+Add this to your play build/sbt
+
+    libraryDependencies ++= Seq(
+      "de.knutwalker" %% "cors-play" % "0.1.0"
+    )
 
 ### Snapshot Version
 
     resolvers += "Sonatype snapshots" at "http://oss.sonatype.org/content/repositories/snapshots/"
 
     libraryDependencies ++= Seq(
-      "de.knutwalker" %% "cors-play" % "0.1.0-SNAPSHOT"
+      "de.knutwalker" %% "cors-play" % "0.1.1-SNAPSHOT"
     )
 
 
