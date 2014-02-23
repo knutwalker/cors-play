@@ -25,3 +25,19 @@ publishArtifact in Test := false
 
 pomIncludeRepository := { _ => false }
 
+pomPostProcess := { (node: scala.xml.Node) =>
+  val rewriteRule =
+    new scala.xml.transform.RewriteRule {
+      override def transform(n: scala.xml.Node): scala.xml.NodeSeq = {
+        val name = n.nameToString(new StringBuilder).toString
+          if (name == "dependency")
+            if ((n \ "groupId").text == "com.sqality.scct")
+              scala.xml.NodeSeq.Empty
+            else n
+          else n
+      }
+    }
+  val transformer = new scala.xml.transform.RuleTransformer(rewriteRule)
+  transformer.transform(node)(0)
+}
+
