@@ -74,13 +74,13 @@ object CorsStrategy {
 
   /** Provide custom logic to determine, whether or not the request should be allowed
     * @param handler a partial function that, given a RequestHeader, should match if the request is allowed and
-    *    return the specific allowed origin
+    *   return the specific allowed origin
     */
   case class CustomPF(handler: PartialFunction[RequestHeader, String]) extends CorsStrategy(handler.lift)
 
   /** Provide custom logic to determine, whether or not the request should be allowed
     * @param handler a function that, given a RequestHeader, should return Some(origin) if the request is allowed,
-    *       otherwise it should return None
+    *      otherwise it should return None
     */
   case class Custom(handler: RequestHeader ⇒ Option[String]) extends CorsStrategy(handler)
 }
